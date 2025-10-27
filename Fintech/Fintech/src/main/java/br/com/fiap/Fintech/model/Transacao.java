@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "tbl_transacao")
-public class TransacaoModel {
+public class Transacao {
 
     @Id
     @GeneratedValue(
