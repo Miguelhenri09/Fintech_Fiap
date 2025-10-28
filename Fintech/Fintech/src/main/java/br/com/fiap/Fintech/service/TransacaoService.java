@@ -43,13 +43,19 @@ public class TransacaoService {
         }
     }
 
-    public Transacao atualizar (Long id, Transacao transacao){
-        Optional<Transacao> transacaoAtual = transacaoRepository.findById(id);
+    public Transacao atualizar(Long id, Transacao transacao) {
+        Optional<Transacao> existente = transacaoRepository.findById(id);
 
-        if (transacaoAtual.isPresent()){
-            return transacaoRepository.save(transacao);
+        if (existente.isPresent()) {
+            Transacao t = existente.get();
+            t.setTituloTransacao(transacao.getTituloTransacao());
+            t.setValor(transacao.getValor());
+            t.setDataTransacao(transacao.getDataTransacao());
+            t.setTipoTransacao(transacao.getTipoTransacao());
+            return transacaoRepository.save(t);
         } else {
             throw new RuntimeException("Transação não encontrada!");
         }
     }
+
 }

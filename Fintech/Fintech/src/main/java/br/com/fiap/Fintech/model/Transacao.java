@@ -2,6 +2,7 @@ package br.com.fiap.Fintech.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -22,7 +23,7 @@ public class Transacao {
 
     @Column(name = "titulo_transacao", length = 50, nullable = false)
     private String tituloTransacao;
-    private double valor;
+    private BigDecimal valor;
 
     @Column(name = "data_transacao")
     private LocalDate dataTransacao;
@@ -46,11 +47,11 @@ public class Transacao {
         this.id = id;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
